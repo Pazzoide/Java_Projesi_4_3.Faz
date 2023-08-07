@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -209,32 +210,21 @@ public class MemberProcessing extends Database {
     }
 
     public static void YonetimTalepKontrol() throws InterruptedException {
-        String tcNo = "";
-        boolean HataliGiris = false;
-        while (!HataliGiris) {
-            try {
-                System.out.print("TC Numaranızı Giriniz : ");
-                tcNo = Consol.nextLine();
-                Long.parseLong(tcNo);
-                HataliGiris = true;
-            } catch (NumberFormatException e) {
-                System.out.println("\033[1;31mTC NO SADECE RAKAMLARDAN OLUŞMALIDIR\033[0m");
-            }
-        }
-        if (TumTalepler.containsKey(tcNo)) {
+        if (!TumTalepler.isEmpty()) {
             System.out.print("Aranıyor...");
             for (int i = 0; i < 20; i++) {
                 Thread.sleep(100);
                 System.out.print(">");
             }
             System.out.println();
-            YonetimeTalepler = TumTalepler.get(tcNo);
-            System.out.println("\033[1;36m\n" + "               TALEPLERİNİZ" + "\033[0m");
-            for (String talep : YonetimeTalepler) {
-                System.out.println("=----------------------------------------=");
-                System.out.println(talep);
-                System.out.println("\033[1;32m\n" + "TALEBİNİZ İŞLEM SIRASINDADIR.\n-" +
-                        " BAŞVURU TARİHİNDEN SONRAKİ 15 İŞ GÜNÜ İÇİNDE TARAFINIZA TALEBİNİZ İLE İLGİLİ GERİ DÖNÜŞ SAĞLANACAKTIR -" + "\033[0m\n");
+            System.out.println("\033[1;36m\n" + "                 TALEPLER" + "\033[0m");
+
+            for (Map.Entry<String, ArrayList<String>> talep : TumTalepler.entrySet()) {
+                for (String talep2 : talep.getValue()) {
+                    System.out.println("=----------------------------------------=");
+                    System.out.println("\033[1;36mTC Numarası    : \033[0m" + talep.getKey());
+                    System.out.println(talep2);
+                }
             }
         } else {
             System.out.println("\033[1;31mTALEP BULUNAMADI\033[0m");
