@@ -1,0 +1,3 @@
+public enum BookTypes {
+    TARIH, POLISIYE, KURGU, ROMAN, DESTAN, TANIMLANMAMIS_TUR
+}
