@@ -36,7 +36,8 @@ public class BookProcessing extends Database{
         System.out.println("                \u001B[1;32m=== TECHNO STUDY CONFLUENCE ===");
         System.out.println("                ======== ARANAN YAZAR ========\u001B[0m");
         for (Map.Entry<String, String> X : KitaplarMap.entrySet()) {
-            if (X.getValue().contains(Yazar)) {
+            String [] valueParca=X.getValue().toLowerCase().split(", ");
+            if (valueParca[0].contains(Yazar.toLowerCase())||valueParca[0].equalsIgnoreCase(Yazar)) {
                 if (OduncKitaplarMap.containsKey(X.getKey())) {
                     System.out.print("\033[1;31m" + "\n ÖDÜNÇ VERİLDİ " + "\033[0m");
                 } else {
@@ -130,13 +131,18 @@ public class BookProcessing extends Database{
         }
     }
     public static void KitapOduncAl() throws InterruptedException{
-        System.out.println("Ödünç almak istediğiniz kitabın ismini giriniz: ");
+        System.out.print("Ödünç almak istediğiniz kitabın ismini giriniz: ");
         String kitapAdi = Consol.nextLine();
-        if (KitaplarMap.containsKey(kitapAdi) || !OduncKitaplarMap.containsKey(kitapAdi)) {
-            System.out.println("\033[1;32m\n" + kitapAdi + " adlı kitap ödünç olarak verilmiştir." + "\033[0m\n");
-            OduncKitaplarMap.put(kitapAdi, "");
-        } else {
-            System.out.print("\033[1;42m" + "\033[1;31m" + "Belirtilen isim ile bir kitap mevcut değildir!\033[0m\n\n");
+        if (!OduncKitaplarMap.containsKey(kitapAdi)) {
+            if (KitaplarMap.containsKey(kitapAdi)) {
+                System.out.println("\033[1;32m\n" + kitapAdi + " adlı kitap ödünç olarak verilmiştir." + "\033[0m\n");
+                OduncKitaplarMap.put(kitapAdi, "");
+            } else {
+                System.out.print("\033[1;42m" + "\033[1;31m" + "Belirtilen isim ile bir kitap mevcut değildir!\033[0m\n\n");
+            }
+        }else {
+            System.out.print("\033[1;42m" + "\033[1;31m" +kitapAdi+ " adlı kitap daha önce ödünç alınmış!\033[0m\n" +
+                    "\033[1;42m" + "\033[1;31m" +"İade edildikten sonra ödünç alabilirsiniz.. \033[0m\n");
         }
     }
     public static void KitapIadeEt() throws InterruptedException{

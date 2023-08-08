@@ -1,44 +1,83 @@
 import java.util.Scanner;
 
-public class GuestManager extends Database{
+public class GuestManager extends Database {
     static Scanner Consol = new Scanner(System.in);
-    public static void ShowGuestMenu() throws InterruptedException{
-        while (true){
-            System.out.println("\u001B[1;34m"+"=== GUEST PANELİ ==="+"\u001B[0m");
-            System.out.println("\u001B[1;36m"+"1- Kitap İşlemleri");
+
+    public static void ShowGuestMenu() throws InterruptedException {
+        while (true) {
+            System.out.println("\u001B[1;34m" + "=== GUEST PANELİ ===" + "\u001B[0m");
+            System.out.println("\u001B[1;36m" + "1- Kitap İşlemleri");
             System.out.println("2- Kayıt Talebi Oluştur");
             System.out.println("3- Kayıt Talebimi Göster");
-            System.out.println("4- Oturumu Sonlandır"+"\u001B[0m");
-            System.out.print("\u001B[1;33m"+"Seçiminiz:"+"\u001B[0m");
+            System.out.println("4- Oturumu Sonlandır" + "\u001B[0m");
+            System.out.print("\u001B[1;33m" + "Seçiminiz:" + "\u001B[0m");
             String Secim = Consol.nextLine();
-            switch (Secim.toUpperCase()){
-                case "1":GuestBookMenu(); break;
-                case "2":UyelikTalebiOlustur(); break;
-                case "3":KayitTalebiGoster(); break;
-                case "4":Helper.AnaMenu(); break;
-                default: System.out.println("\u001B[1;31m"+"HATALI SEÇİM, TEKRAR DENEYİNİZ"+"\u001B[0m");
+            switch (Secim.toUpperCase()) {
+                case "1":
+                    System.out.println("\u001B[1;32m" + "Yükleniyor..." + "\u001B[0m");
+                    for (int i = 0; i < 20; i++) {
+                        Thread.sleep(100);
+                        System.out.print(">");
+                    }
+                    System.out.println();
+                    GuestBookMenu();
+                    break;
+                case "2":
+                    UyelikTalebiOlustur();
+                    break;
+                case "3":
+                    KayitTalebiGoster();
+                    break;
+                case "4":
+                    System.out.println("\u001B[1;32m" + "Oturum Kapatılıyor..." + "\u001B[0m");
+                    for (int i = 0; i < 20; i++) {
+                        Thread.sleep(100);
+                        System.out.print(">");
+                    }
+                    System.out.println();
+                    Helper.AnaMenu();
+                    break;
+                default:
+                    System.out.println("\u001B[1;31m" + "HATALI SEÇİM, TEKRAR DENEYİNİZ" + "\u001B[0m");
             }
         }
     }
-    private static void GuestBookMenu() throws InterruptedException{
-        while (true){
-            System.out.println("\u001B[1;34m"+"=== KİTAP İŞLEMLERİ ==="+"\u001B[0m");
-            System.out.println("\u001B[1;36m"+"1- Kitap Listesi");
+
+    private static void GuestBookMenu() throws InterruptedException {
+        while (true) {
+            System.out.println("\u001B[1;34m" + "=== KİTAP İŞLEMLERİ ===" + "\u001B[0m");
+            System.out.println("\u001B[1;36m" + "1- Kitap Listesi");
             System.out.println("2- Yazardan Kitap Bul");
             System.out.println("3- Kitap Türü veya Yayın Tarihinden Kitap Bul");
-            System.out.println("A- Bir Önceki Menü"+"\u001B[0m");
-            System.out.print("\u001B[1;33m"+"Seçiminiz:"+"\u001B[0m");
+            System.out.println("A- Bir Önceki Menü" + "\u001B[0m");
+            System.out.print("\u001B[1;33m" + "Seçiminiz:" + "\u001B[0m");
             String Secim = Consol.nextLine();
-            switch (Secim.toUpperCase()){
-                case "1":BookProcessing.KitapListesiYazdir(); break;
-                case "2":BookProcessing.YazardanKitapBul(); break;
-                case "3":BookProcessing.TurVeyaYayinIleKitapBul(); break;
-                case "A":ShowGuestMenu(); break;
-                default: System.out.println("\u001B[1;31m"+"HATALI SEÇİM, TEKRAR DENEYİNİZ"+"\u001B[0m");
+            switch (Secim.toUpperCase()) {
+                case "1":
+                    BookProcessing.KitapListesiYazdir();
+                    break;
+                case "2":
+                    BookProcessing.YazardanKitapBul();
+                    break;
+                case "3":
+                    BookProcessing.TurVeyaYayinIleKitapBul();
+                    break;
+                case "A":
+                    System.out.println("\u001B[1;32m" + "Yükleniyor..." + "\u001B[0m");
+                    for (int i = 0; i < 20; i++) {
+                        Thread.sleep(100);
+                        System.out.print(">");
+                    }
+                    System.out.println();
+                    ShowGuestMenu();
+                    break;
+                default:
+                    System.out.println("\u001B[1;31m" + "HATALI SEÇİM, TEKRAR DENEYİNİZ" + "\u001B[0m");
             }
         }
     }
-    private static void UyelikTalebiOlustur() throws InterruptedException{
+
+    private static void UyelikTalebiOlustur() throws InterruptedException {
         System.out.println("=== ÜYELİK TALEBİ OLUŞTUR ===");
         String tcNO = "";
         while (true) {
@@ -129,7 +168,8 @@ public class GuestManager extends Database{
         }
         System.out.println("\033[1;32m=== ÜYE TALEBİ ALINDI ===\033[0m");
     }
-    private static void KayitTalebiGoster() throws InterruptedException{
+
+    private static void KayitTalebiGoster() throws InterruptedException {
         String tcNo = "";
         boolean HataliGiris = false;
         while (!HataliGiris) {

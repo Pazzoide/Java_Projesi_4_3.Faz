@@ -9,15 +9,21 @@ public class UserManager extends Database {
 
     public static void ShowUserMenu() throws InterruptedException {
         while (true) {
-            System.out.println("\u001B[1;34m"+"=== USER PANELİ ==="+"\u001B[0m");
-            System.out.println("\u001B[1;36m"+"1- Kitap İşlemleri");
+            System.out.println("\u001B[1;34m" + "=== USER PANELİ ===" + "\u001B[0m");
+            System.out.println("\u001B[1;36m" + "1- Kitap İşlemleri");
             System.out.println("2- Yönetimden Talepte Bulun");
             System.out.println("3- Taleplerimi Görüntüle");
-            System.out.println("4- Oturumu Sonlandır"+"\u001B[0m");
-            System.out.print("\u001B[1;33m"+"Seçiminiz:"+"\u001B[0m");
+            System.out.println("4- Oturumu Sonlandır" + "\u001B[0m");
+            System.out.print("\u001B[1;33m" + "Seçiminiz:" + "\u001B[0m");
             String Secim = Consol.nextLine();
             switch (Secim) {
                 case "1":
+                    System.out.println("\u001B[1;32m" + "Yükleniyor..." + "\u001B[0m");
+                    for (int i = 0; i < 20; i++) {
+                        Thread.sleep(100);
+                        System.out.print(">");
+                    }
+                    System.out.println();
                     UserBookMenu();
                     break;
                 case "2":
@@ -27,24 +33,30 @@ public class UserManager extends Database {
                     TalepleriGoruntule();
                     break;
                 case "4":
+                    System.out.println("\u001B[1;32m" + "Oturum Kapatılıyor..." + "\u001B[0m");
+                    for (int i = 0; i < 20; i++) {
+                        Thread.sleep(100);
+                        System.out.print(">");
+                    }
+                    System.out.println();
                     Helper.AnaMenu();
                     break;
                 default:
-                    System.out.println("\u001B[1;31m"+"HATALI SEÇİM, TEKRAR DENEYİNİZ"+"\u001B[0m");
+                    System.out.println("\u001B[1;31m" + "HATALI SEÇİM, TEKRAR DENEYİNİZ" + "\u001B[0m");
             }
         }
     }
 
     private static void UserBookMenu() throws InterruptedException {
         while (true) {
-            System.out.println("\u001B[1;34m"+"=== KİTAP İŞLEMLERİ ==="+"\u001B[0m");
-            System.out.println("\u001B[1;36m"+"1- Kitap Listesi");
+            System.out.println("\u001B[1;34m" + "=== KİTAP İŞLEMLERİ ===" + "\u001B[0m");
+            System.out.println("\u001B[1;36m" + "1- Kitap Listesi");
             System.out.println("2- Yazardan Kitap Bul");
             System.out.println("3- Kitap Türü veya Yayın Tarihinden Kitap Bul");
             System.out.println("4- Kitap Ödünç Al");
             System.out.println("5- Kitap İade Et");
-            System.out.println("A- Bir Önceki Menü"+"\u001B[0m");
-            System.out.print("\u001B[1;33m"+"Seçiminiz:"+"\u001B[0m");
+            System.out.println("A- Bir Önceki Menü" + "\u001B[0m");
+            System.out.print("\u001B[1;33m" + "Seçiminiz:" + "\u001B[0m");
             String Secim = Consol.nextLine();
             switch (Secim.toUpperCase()) {
                 case "1":
@@ -63,10 +75,16 @@ public class UserManager extends Database {
                     BookProcessing.KitapIadeEt();
                     break;
                 case "A":
+                    System.out.println("\u001B[1;32m" + "Yükleniyor..." + "\u001B[0m");
+                    for (int i = 0; i < 20; i++) {
+                        Thread.sleep(100);
+                        System.out.print(">");
+                    }
+                    System.out.println();
                     ShowUserMenu();
                     break;
                 default:
-                    System.out.println("\u001B[1;31m"+"HATALI SEÇİM, TEKRAR DENEYİNİZ"+"\u001B[0m");
+                    System.out.println("\u001B[1;31m" + "HATALI SEÇİM, TEKRAR DENEYİNİZ" + "\u001B[0m");
             }
         }
     }
@@ -91,6 +109,7 @@ public class UserManager extends Database {
                 break;
             } else {
                 System.out.println("\033[1;31m" + "HATALI TC NO ya da ÜYELİK MEVCUT DEĞİL!" + "\033[0m\n");
+                return;
             }
         }
 

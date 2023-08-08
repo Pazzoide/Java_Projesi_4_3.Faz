@@ -58,7 +58,8 @@ public class MemberProcessing extends Database {
                         "=========== ŞEHİR İLE ÜYE ARAMA ==========\n" +
                         "   TC NO        İSİM - SOYİSİM - ŞEHİR - D.YILI\033[0m");
         for (Map.Entry<String, String> X : UyelerMap.entrySet()) {
-            if (X.getValue().contains(Sehir)) {
+            String[]valueParca=X.getValue().split(", ");
+            if (valueParca[2].contains(Sehir)||Sehir.equalsIgnoreCase(valueParca[2])) {
                 System.out.println(X.getKey() + " - " + X.getValue() + " | ");
                 anahtar = false;
             }
@@ -218,11 +219,16 @@ public class MemberProcessing extends Database {
             }
             System.out.println();
             System.out.println("\033[1;36m\n" + "                 TALEPLER" + "\033[0m");
-
             for (Map.Entry<String, ArrayList<String>> talep : TumTalepler.entrySet()) {
                 for (String talep2 : talep.getValue()) {
                     System.out.println("=----------------------------------------=");
                     System.out.println("\033[1;36mTC Numarası    : \033[0m" + talep.getKey());
+                    for (Map.Entry<String, String> X : UyelerMap.entrySet()) {
+                        if (X.getKey().equals(talep.getKey())) {
+                            String[] eachValuarr = X.getValue().split(", ");
+                            System.out.println("\033[1;36mAdı Soyadı     : \033[0m" + eachValuarr[0] + " " + eachValuarr[1]);
+                        }
+                    }
                     System.out.println(talep2);
                 }
             }

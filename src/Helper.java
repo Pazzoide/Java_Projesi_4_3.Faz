@@ -28,13 +28,28 @@ public class Helper {
             }
         }
         switch (LoggedInUserRole){
-            case ADMIN:
+            case ADMIN:System.out.println("\u001B[1;32m"+"Yükleniyor..."+"\u001B[0m");
+                for (int i = 0; i < 20; i++) {
+                    Thread.sleep(100);
+                    System.out.print(">");
+                }
+                System.out.println();
                 System.out.println("\u001B[1;32m"+"ADMIN OLARAK GİRİŞ YAPILDI"+"\u001B[0m");
                 AdminManager.ShowAdminMenu();
-            case USER:
+            case USER:System.out.println("\u001B[1;32m"+"Yükleniyor..."+"\u001B[0m");
+                for (int i = 0; i < 20; i++) {
+                    Thread.sleep(100);
+                    System.out.print(">");
+                }
+                System.out.println();
                 System.out.println("\u001B[1;32m"+"USER OLARAK GİRİŞ YAPILDI"+"\u001B[0m");
                 UserManager.ShowUserMenu();
-            case GUEST:
+            case GUEST:System.out.println("\u001B[1;32m"+"Yükleniyor..."+"\u001B[0m");
+                for (int i = 0; i < 20; i++) {
+                    Thread.sleep(100);
+                    System.out.print(">");
+                }
+                System.out.println();
                 System.out.println("\u001B[1;32m"+"GUEST OLARAK GİRİŞ YAPILDI"+"\u001B[0m");
                 GuestManager.ShowGuestMenu();
         }
@@ -60,7 +75,13 @@ public class Helper {
             System.out.print("\u001B[1;33m"+"Seçiminiz:"+"\u001B[0m");
             Secim=Consol.nextLine();
             switch (Secim.toUpperCase()){
-                case "1":LoginAndShow(null); break;
+                case "1": System.out.println("\u001B[1;32m"+"Yükleniyor..."+"\u001B[0m");
+                    for (int i = 0; i < 20; i++) {
+                    Thread.sleep(100);
+                    System.out.print(">");
+                }
+                    System.out.println();
+                    LoginAndShow(null); break;
                 case "2":kutuphaneBilgileriniYazdir(); break;
                 case "Q":projeDurdur();
                 default: System.out.println("\u001B[1;31m"+"HATALI SEÇİM, TEKRAR DENEYİNİZ"+"\u001B[0m");
