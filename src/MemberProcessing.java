@@ -26,6 +26,12 @@ public class MemberProcessing extends Database {
         boolean anahtar = true;
         System.out.print("Aradığınız üyenin soyisminin tamamını ya da bir kısmını giriniz: ");
         String uyeSoyad = Consol.nextLine();
+        System.out.println("Aranıyor...");
+        for (int i = 0; i < 20; i++) {
+            Thread.sleep(100);
+            System.out.print(">");
+        }
+        System.out.println();
         System.out.println(
                 "\033[1;36m\n========== TECHNO STUDY BOOTCAMP ===========\n" +
                         "=========== SOYİSİM İLE ÜYE ARAMA ==========\n" +
